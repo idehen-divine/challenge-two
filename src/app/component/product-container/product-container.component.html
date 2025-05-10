@@ -1,0 +1,47 @@
+<main class="product-container">
+  <section class="images">
+    <div class="main-image">
+      <button class="nav left" (click)="prevImage()">
+        <img src="./images/icon-previous.svg" alt="Previous" />
+      </button>
+      <img [src]="activeImage" alt="Sneakers" />
+      <button class="nav right" (click)="nextImage()">
+        <img src="./images/icon-next.svg" alt="Next" />
+      </button>
+    </div>
+    <div class="thumbnails">
+      <img *ngFor="let thumbnail of products[currentProductIndex].thumbnails" 
+    [src]="thumbnail" [ngClass]="{'active': activeThumbnail === thumbnail}" 
+    (click)="setActiveThumbnail(thumbnail)" />
+    </div>
+  </section>
+
+  <section class="details">
+    <p class="company">SNEAKER COMPANY</p>
+    <h1>{{ products[currentProductIndex].name }}</h1>
+    <p class="description">
+      {{ products[currentProductIndex].description }}
+    </p>
+    <div class="price">
+      <span class="current">{{ products[currentProductIndex].price * (1 - products[currentProductIndex].discount / 100) | currency }}</span>
+      <span class="discount">{{ products[currentProductIndex].discount }}%</span>
+      <span class="original">{{ products[currentProductIndex].price | currency }}</span>
+    </div>
+
+    <div class="actions">
+      <div class="quantity">
+        <button (click)="decrement()">
+          <img src="./images/icon-minus.svg" alt="-" />
+        </button>
+        <span>{{ quantity }}</span>
+        <button (click)="increment()">
+          <img src="./images/icon-plus.svg" alt="+" />
+        </button>
+      </div>
+      <button class="add-to-cart" (click)="addToCart(products[currentProductIndex], quantity)">
+        <img src="./images/icon-cart.svg" alt="Cart" />
+        Add to cart
+      </button>
+    </div>
+  </section>
+</main>

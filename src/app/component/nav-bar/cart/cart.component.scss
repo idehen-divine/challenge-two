@@ -1,0 +1,123 @@
+@use "../../../../styles.scss";
+
+.cart {
+  position: relative;
+
+  svg {
+    cursor: pointer;
+  }
+
+  .cart__count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: var(--color-orange);
+    color: var(--color-white);
+    font-size: 0.5rem;
+    font-weight: 500;
+    padding: 0 0.3rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cart-dropdown {
+    position: absolute;
+    right: 0;
+    top: 50px;
+    background-color: var(--color-white);
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-width: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+    border-radius: 0.5rem;
+    z-index: 10;
+
+    .cart-dropdown__title {
+      font-size: 1rem;
+      font-weight: 500;
+      border-bottom: 1px solid var(--color-grayish-blue);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #eee;
+
+      .cart-item-image {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        margin-right: 1rem;
+        border-radius: 0.5rem;
+      }
+
+      .cart-item-details {
+        display: flex;
+        flex-direction: column;
+        .cart-item-name {
+          font-size: 0.8rem;
+          font-weight: 700;
+          color: var(--color-dark-grayish-blue);
+          white-space: nowrap;
+        }
+
+        .cart-item-price {
+          font-size: 0.8rem;
+          font-weight: 500;
+          color: var(--color-dark-grayish-blue);
+
+          .cart-item-total {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--color-black);
+          }
+        }
+      }
+
+      .cart-item-delete {
+        cursor: pointer;
+      }
+    }
+
+    .checkout-btn {
+      width: 100%;
+      padding: 10px;
+      background-color: var(--color-orange);
+      color: var(--color-black);
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+      border-radius: 0.5rem;
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+
+    .cart-dropdown__empty {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-dark-grayish-blue);
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 200px;
+    }
+
+    @media (max-width: 600px) {
+      right: 0;
+      top: 10vh;
+      position: fixed;
+      width: 90vw;
+      margin: 1rem;
+    }
+  }
+}
