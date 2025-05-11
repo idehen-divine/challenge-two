@@ -80,4 +80,16 @@ export class ProductContainerComponent implements OnInit, OnDestroy {
     this.quantity = 1;
   }
 
+  lightboxOpen = false;
+
+  openLightbox() {
+    this.lightboxOpen = true;
+    document.body.classList.add('no-scroll');
+  }
+
+  closeLightbox() {
+    this.lightboxOpen = false;
+    document.body.classList.remove('no-scroll');
+  }
+
 }

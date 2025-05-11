@@ -4,7 +4,7 @@
       <button class="nav left" (click)="prevImage()">
         <img src="./images/icon-previous.svg" alt="Previous" />
       </button>
-      <img [src]="activeImage" alt="Sneakers" />
+      <img [src]="activeImage" alt="Sneakers"  (click)="openLightbox()"/>
       <button class="nav right" (click)="nextImage()">
         <img src="./images/icon-next.svg" alt="Next" />
       </button>
@@ -45,3 +45,29 @@
     </div>
   </section>
 </main>
+
+<div class="lightbox" *ngIf="lightboxOpen">
+  <div class="overlay" (click)="closeLightbox()"></div>
+  <div class="lightbox-content">
+    <button class="close-btn" (click)="closeLightbox()">×</button>
+
+    <button class="nav left" (click)="prevImage()">
+      <img src="./images/icon-previous.svg" alt="Previous" />
+    </button>
+
+    <img [src]="activeImage" alt="Lightbox Image" class="lightbox-image" />
+
+    <button class="nav right" (click)="nextImage()">
+      <img src="./images/icon-next.svg" alt="Next" />
+    </button>
+
+    <div class="lightbox-thumbnails">
+      <img
+        *ngFor="let thumbnail of currentProduct.thumbnails; let i = index"
+        [src]="thumbnail"
+        [class.active]="i === currentImageIndex"
+        (click)="setActiveThumbnail(thumbnail)"
+      />
+    </div>
+  </div>
+</div>
